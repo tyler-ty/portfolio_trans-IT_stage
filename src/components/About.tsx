@@ -40,7 +40,7 @@ export default function AboutPage() {
           Tyler Imagbudu
         </h1>
         <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-            Hallo! Ik ben student aan de AP Hogeschool en stagiair(e) bij Trans-IT. 
+            Hallo! Ik ben student aan de AP Hogeschool en stagiair bij Trans-IT. 
             Tijdens mijn studie heb ik interesse ontwikkeld in full stack development, en vooral in React.js. 
             Ik vind het fascinerend hoe je applicaties kunt maken die nuttig zijn en een echte meerwaarde bieden.
         </p>
