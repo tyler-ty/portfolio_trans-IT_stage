@@ -1,87 +1,49 @@
-import { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import matter from "gray-matter";
+import { useState } from "react";
+import { posts, type Post } from "../../data/posts";
+import BlogCard from "../components/BlogCard";
 
-interface BlogPost {
-  title: string;
-  date: string;
-  category: string;
-  content: string;
-}
+export default function Blog() {
+  const [selectedTag, setSelectedTag] = useState<string>("all");
 
-const importPosts = import.meta.glob("./posts/week1.md", { query: '?raw' });
+  const allTags: string[] = [
+    "all",
+    ...Array.from(new Set(posts.flatMap((post) => post.tags))),
+  ];
 
-const Blog = () => {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [filter, setFilter] = useState<string>("all");
-
-  useEffect(() => {
-    async function loadPosts() {
-      const loadedPosts: BlogPost[] = await Promise.all(
-        Object.entries(importPosts).map(async ([, resolver]) => {
-          const raw = await resolver();
-          const { data, content } = matter(raw);
-          return {
-            title: data.title as string,
-            date: data.date as string,
-            category: data.category as string,
-            content: content as string,
-          };
-        })
-      );        console.log(loadedPosts)
-      setPosts(loadedPosts);
-    }
-    loadPosts();
-  }, []);
-
-  const filtered =
-    filter === "all" ? posts : posts.filter((p) => p.category === filter);
+  const filteredPosts: Post[] =
+    selectedTag === "all"
+      ? posts
+      : posts.filter((post) => post.tags.includes(selectedTag));
 
   return (
-    <>
-      <div className="flex flex-col justify-center items-center p-6">
-        <h2 className="text-2xl font-bold mb-4">Blog</h2>
+    <div className="flex flex-col items-center px-4 py-8">
+      {/* Titel */}
+      <h1 className="text-3xl font-bold mb-6 text-center">Mijn Blog</h1>
 
-        <div className="mb-4 space-x-2">
-          <button
-            onClick={() => console.log(posts)}
-            className="bg-gray-200 px-3 py-1 rounded"
-          >
-            Alle
-          </button>
-          <button
-            onClick={() => setFilter("code")}
-            className="bg-gray-200 px-3 py-1 rounded"
-          >
-            Code
-          </button>
-          <button
-            onClick={() => setFilter("teambuilding")}
-            className="bg-gray-200 px-3 py-1 rounded"
-          >
-            Teambuilding
-          </button>
-          <button
-            onClick={() => setFilter("reflectie")}
-            className="bg-gray-200 px-3 py-1 rounded"
-          >
-            Reflectie
-          </button>
-        </div>
+      {/* Tag filter */}
+      <div className="mb-8 flex flex-wrap gap-3 justify-center">
+  {allTags.map((tag) => (
+    <button
+      key={tag}
+      onClick={() => setSelectedTag(tag)}
+      className={`px-4 py-2 rounded-full cursor-pointer uppercase font-medium text-sm transition-colors ${
+        selectedTag === tag
+          ? "bg-blue-600 text-white"
+          : "bg-gray-300 text-gray-800 hover:bg-gray-400"
+      }`}
+    >
+      {tag}
+    </button>
+  ))}
+</div>
 
-        {filtered.map((post, i) => (
-          <div key={i} className="bg-gray-100 p-4 mb-4 rounded-xl shadow">
-            <h3 className="font-bold text-lg">{post.title}</h3>
-            <p className="text-sm text-gray-600">
-              {post.date} – {post.category}
-            </p>
-            <div className="prose mt-2">
-              <ReactMarkdown>{post.content}</ReactMarkdown>
-            </div>
-          </div>
+
+      {/* Blogposts onder elkaar, gecentreerd */}
+      <div className="max-w-2xl">
+        {filteredPosts.map((post) => (
+          <BlogCard key={post.id} post={post} />
         ))}
       </div>
-    </>
+    </div>
   );
-};
-export default Blog;
+}

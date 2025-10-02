@@ -1,13 +1,21 @@
 import { Link } from "react-router-dom";
+import { posts, type Post } from "../../data/posts";
 import { motion } from "framer-motion";
+import BlogCard from "../components/BlogCard";
 
 export default function LandingPage() {
+  const sortedPosts = [...posts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  const latestPost: Post | undefined = sortedPosts[0];
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-white text-center px-6">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-white text-center px-6 md:px-12 py-10">
       {/* Hero sectie */}
       <motion.h1
-        className="text-4xl md:text-6xl font-extrabold mb-4 text-gray-800"
-        initial={{ opacity: 0, y: -40 }}
+        className="text-2xl md:text-4xl font-extrabold mb-4 text-gray-800 max-w-3xl"
+        initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
@@ -15,45 +23,54 @@ export default function LandingPage() {
       </motion.h1>
 
       <motion.p
-        className="text-lg md:text-xl text-gray-600 max-w-2xl mb-8"
+        className="text-base md:text-lg text-gray-600 max-w-6xl mx-auto mb-8 leading-relaxed"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.7 }}
       >
-        Hier deel ik mijn ervaringen, reflecties en projecten tijdens mijn WPL-stage. 
-        Neem gerust een kijkje bij mijn blogposts of leer meer over mij en mijn stageplek.
+        Op deze website zal ik mijn ervaring documenteren tijdens mijn stage bij Trans-IT. 
+
       </motion.p>
 
       {/* Knoppen */}
       <motion.div
-        className="flex gap-4"
+        className="flex flex-col sm:flex-row gap-3 mb-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.7 }}
       >
         <Link
-          to="/blog"
-          className="bg-[#003c7d] text-white px-6 py-3 rounded-2xl shadow hover:bg-[#0053a0] transition"
+          to="/blogs"
+          className="bg-[#003c7d] text-white px-6 py-2.5 rounded-2xl shadow hover:bg-[#0053a0] transition"
         >
           Bekijk Blog
         </Link>
-        <Link
-          to="/about"
-          className="bg-gray-200 text-gray-800 px-6 py-3 rounded-2xl shadow hover:bg-gray-300 transition"
-        >
-          Over Mij
-        </Link>
       </motion.div>
 
-      {/* Extra: ruimte voor een afbeelding of banner */}
+      {/* Extra afbeelding / banner */}
       <motion.img
         src="https://trans-it.be/wp-content/uploads/2023/11/logo-trans-it-2.png"
         alt="Stage banner"
-        className="mt-6 w-24 h-24 object-contain shadow-lg"
-        initial={{ opacity: 0, y: 40 }}
+        className="mt-4 w-24 h-24 md:w-32 md:h-32 object-contain shadow-lg"
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7, duration: 0.8 }}
       />
+
+      {/* Latest blogpost titel */}
+      {latestPost && (
+        <motion.div
+          className="w-full max-w-3xl mt-12 text-left"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.8 }}
+        >
+          <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+            Laatste blogpost
+          </h2>
+          <BlogCard post={latestPost} />
+        </motion.div>
+      )}
     </div>
   );
 }

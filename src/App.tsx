@@ -7,6 +7,9 @@ import styles from "./App.module.css";
 import LandingPage from "./routes/LandingPage";
 import NavBar from "./components/NavBar";
 import Blog from "./routes/Blog";
+import About from "./components/About";
+import Footer from "./components/Footer";
+import BlogDetail from "./components/BlogDetail";
 //add translations
 const Root = () => {
   return (
@@ -15,14 +18,11 @@ const Root = () => {
       <div>
         <Outlet />
       </div>
-      <div className={styles.footer}>Footer</div>
+      <Footer/>
     </div>
   );
 };
 
-const About = () => {
-  return <div>About</div>;
-};
 
 const App = () => {
   const router = createBrowserRouter([
@@ -35,13 +35,17 @@ const App = () => {
           element: <LandingPage />,
         },
         {
-          path: "blog",
+          path: "blogs",
           element: <Blog />,
         },
         {
           path: "about",
           element: <About />,
         },
+        {
+          path:"blog/:id",
+          element: <BlogDetail/>
+        }
       ],
     },
   ]);
