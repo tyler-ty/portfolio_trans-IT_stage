@@ -1,6 +1,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { NavLink } from 'react-router-dom'
+import logo from "../assets/logo-trans-it-2.png"
 
 const navigation = [
   { name: 'Blogs', href: 'blogs', current: true },
@@ -34,7 +35,7 @@ const NavBar = () => {
               <NavLink to="/">
                 <img
                 alt="Trans-It"
-                src="logo-trans-it-2.png"
+                src={logo}
                 style={{backgroundColor:"white"}}
                 className="h-8 w-auto"
               />
