@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^2.2.9",
     "@heroicons/react": "^2.2.0",
+    "@supabase/supabase-js": "^2.75.0",
     "@tailwindcss/vite": "^4.1.13",
     "framer-motion": "^12.23.22",
     "front-matter": "^4.0.2",

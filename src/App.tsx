@@ -4,9 +4,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import styles from "./App.module.css";
-import LandingPage from "./routes/LandingPage";
+import LandingPage from "./components/LandingPage";
 import NavBar from "./components/NavBar";
-import Blog from "./routes/Blog";
+import Blog from "./components/Blog";
 import About from "./components/About";
 import Footer from "./components/Footer";
 import BlogDetail from "./components/BlogDetail";

@@ -6,10 +6,14 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
+  const previewContent =
+    post.content.length > 150
+      ? post.content.slice(0, 150) + "..."
+      : post.content;
+
   return (
     <Link to={`/blog/${post.id}`} className="block">
       <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow mb-6 hover:shadow-lg transition-shadow duration-200">
-        {/* Optional image */}
         {post.image && (
           <img
             src={post.image}
@@ -19,8 +23,10 @@ export default function BlogCard({ post }: BlogCardProps) {
         )}
 
         <div className="p-6">
-          <h2 className="text-2xl font-bold mb-2 text-gray-900">{post.title}</h2>
-          <p className="text-gray-700 mb-4">{post.content}</p>
+          <h2 className="text-2xl font-bold mb-2 text-gray-900">
+            {post.title}
+          </h2>
+          <p className="text-gray-700 mb-4">{previewContent}</p>
 
           <div className="flex flex-wrap gap-2">
             {post.tags.map((tag, index) => (

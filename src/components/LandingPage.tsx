@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { posts, type Post } from "../../data/posts";
 import { motion } from "framer-motion";
-import BlogCard from "../components/BlogCard";
+import BlogCard from "./BlogCard";
 
 export default function LandingPage() {
   const sortedPosts = [...posts].sort(
@@ -12,7 +12,6 @@ export default function LandingPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-white text-center px-6 md:px-12 py-10">
-      {/* Hero sectie */}
       <motion.h1
         className="text-2xl md:text-4xl font-extrabold mb-4 text-gray-800 max-w-3xl"
         initial={{ opacity: 0, y: -30 }}
@@ -32,7 +31,6 @@ export default function LandingPage() {
 
       </motion.p>
 
-      {/* Knoppen */}
       <motion.div
         className="flex flex-col sm:flex-row gap-3 mb-10"
         initial={{ opacity: 0 }}
@@ -47,7 +45,6 @@ export default function LandingPage() {
         </Link>
       </motion.div>
 
-      {/* Extra afbeelding / banner */}
       <motion.img
         src="https://trans-it.be/wp-content/uploads/2023/11/logo-trans-it-2.png"
         alt="Stage banner"
@@ -57,7 +54,6 @@ export default function LandingPage() {
         transition={{ delay: 0.7, duration: 0.8 }}
       />
 
-      {/* Latest blogpost titel */}
       {latestPost && (
         <motion.div
           className="w-full max-w-3xl mt-12 text-left"
