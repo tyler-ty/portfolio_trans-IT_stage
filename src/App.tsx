@@ -3,7 +3,6 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import styles from "./App.module.css";
 import LandingPage from "./components/LandingPage";
 import NavBar from "./components/NavBar";
 import Blog from "./components/Blog";
