@@ -13,9 +13,9 @@ import BlogDetail from "./components/BlogDetail";
 //add translations
 const Root = () => {
   return (
-    <div className={styles.container}>
+    <div className="flex flex-col min-h-screen">
       <NavBar/>
-      <div>
+      <div className="flex-grow">
         <Outlet />
       </div>
       <Footer/>

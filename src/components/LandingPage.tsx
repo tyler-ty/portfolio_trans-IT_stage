@@ -1,14 +1,28 @@
 import { Link } from "react-router-dom";
-import { posts, type Post } from "../../data/posts";
 import { motion } from "framer-motion";
 import BlogCard from "./BlogCard";
+import { useState,useEffect } from "react";
+import type {Posts} from "../../types.ts"
+
+import { createClient } from "@supabase/supabase-js";
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_PUBLIC_SUPABASE_ANON);
 
 export default function LandingPage() {
-  const sortedPosts = [...posts].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  // use context for posts data
+    const [posts, setPosts] = useState<Posts[]>([])
+  const sortedPosts:Posts[] = [...posts].sort(
+    (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
   );
+  const getPosts = async() => {
+      const {data} = await supabase.from("BlogPosts").select();
+      console.log(data)
+      setPosts(data as Posts[])
+    }
+  useEffect(() => {
+    getPosts();
+  },[]);
 
-  const latestPost: Post | undefined = sortedPosts[0];
+  const latestPost: Posts = sortedPosts[0];
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-white text-center px-6 md:px-12 py-10">
@@ -27,7 +41,7 @@ export default function LandingPage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.7 }}
       >
-        Op deze website zal ik mijn ervaring documenteren tijdens mijn stage bij Trans-IT. 
+        Op deze website zal ik mijn ervaring documenteren tijdens mijn stage bij Trans-IT. Blog posts komen vanuit Supabase.
 
       </motion.p>
 
@@ -44,6 +58,7 @@ export default function LandingPage() {
           Bekijk Blog
         </Link>
       </motion.div>
+
 
       <motion.img
         src="https://trans-it.be/wp-content/uploads/2023/11/logo-trans-it-2.png"

@@ -1,22 +1,25 @@
-import type { Post } from "../../data/posts";
 import { Link } from "react-router-dom";
-
+import type {Posts} from "../../types.ts"
 interface BlogCardProps {
-  post: Post;
+  post: Posts;
 }
 
-export default function BlogCard({ post }: BlogCardProps) {
-  const previewContent =
-    post.content.length > 150
-      ? post.content.slice(0, 150) + "..."
-      : post.content;
+export default function BlogCard({ post  }: BlogCardProps) {
+  let previewContent = ""
+  if(post.markdown) {
+  previewContent =
+    post?.markdown.length > 150
+      ? post.markdown.slice(0, 150) + "..."
+      : post.markdown;
+  }
+
 
   return (
     <Link to={`/blog/${post.id}`} className="block">
       <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow mb-6 hover:shadow-lg transition-shadow duration-200">
-        {post.image && (
+        {post.attachments && post.title &&  (
           <img
-            src={post.image}
+            src={""}
             alt={post.title}
             className="w-full h-64 object-cover"
           />
@@ -29,7 +32,7 @@ export default function BlogCard({ post }: BlogCardProps) {
           <p className="text-gray-700 mb-4">{previewContent}</p>
 
           <div className="flex flex-wrap gap-2">
-            {post.tags.map((tag, index) => (
+            {post.tags?.map((tag, index) => (
               <span
                 key={index}
                 className="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full"

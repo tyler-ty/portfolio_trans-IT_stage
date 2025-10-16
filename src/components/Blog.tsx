@@ -1,19 +1,34 @@
-import { useState } from "react";
-import { posts, type Post } from "../../data/posts";
+import { useState,useEffect } from "react";
 import BlogCard from "./BlogCard";
+import type {Posts} from "../../types.ts"
+
+
+import { createClient } from "@supabase/supabase-js";
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_PUBLIC_SUPABASE_ANON);
 
 export default function Blog() {
   const [selectedTag, setSelectedTag] = useState<string>("all");
+  const [posts, setPosts] = useState<Posts[]>([])
+
+  useEffect(() => {
+    getPosts();
+  },[]);
+
+  const getPosts = async() => {
+    const {data} = await supabase.from("BlogPosts").select();
+    console.log(data)
+    setPosts(data as Posts[])
+  }
 
   const allTags: string[] = [
     "all",
-    ...Array.from(new Set(posts.flatMap((post) => post.tags))),
+    ...Array.from(new Set(posts.flatMap((post) => post.tags ?? []))),
   ];
 
-  const filteredPosts: Post[] =
+  const filteredPosts: Posts[] =
     selectedTag === "all"
       ? posts
-      : posts.filter((post) => post.tags.includes(selectedTag));
+      : posts.filter((post) => (post.tags ?? []).includes(selectedTag));
 
   return (
     <div className="flex flex-col items-center px-4 py-8">
