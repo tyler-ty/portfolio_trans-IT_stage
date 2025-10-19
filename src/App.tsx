@@ -9,6 +9,7 @@ import Blog from "./components/Blog";
 import About from "./components/About";
 import Footer from "./components/Footer";
 import BlogDetail from "./components/BlogDetail";
+import { BlogProvider } from "./components/BlogContext/BlogContext";
 //add translations
 const Root = () => {
   return (
@@ -51,7 +52,9 @@ const App = () => {
 
   return (
     <div>
-      <RouterProvider router={router} />
+      <BlogProvider>
+        <RouterProvider router={router} />
+      </BlogProvider>
     </div>
   );
 };

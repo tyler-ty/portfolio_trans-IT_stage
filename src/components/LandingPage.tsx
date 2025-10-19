@@ -1,26 +1,14 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import BlogCard from "./BlogCard";
-import { useState,useEffect } from "react";
+import { useContext } from "react";
 import type {Posts} from "../../types.ts"
-
-import { createClient } from "@supabase/supabase-js";
-const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_PUBLIC_SUPABASE_ANON);
-
+import { BlogContext } from "./BlogContext/BlogContext.tsx";
 export default function LandingPage() {
-  // use context for posts data
-    const [posts, setPosts] = useState<Posts[]>([])
+  const {posts} = useContext(BlogContext)
   const sortedPosts:Posts[] = [...posts].sort(
     (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
   );
-  const getPosts = async() => {
-      const {data} = await supabase.from("BlogPosts").select();
-      console.log(data)
-      setPosts(data as Posts[])
-    }
-  useEffect(() => {
-    getPosts();
-  },[]);
 
   const latestPost: Posts = sortedPosts[0];
 
@@ -41,7 +29,7 @@ export default function LandingPage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.7 }}
       >
-        Op deze website zal ik mijn ervaring documenteren tijdens mijn stage bij Trans-IT. Blog posts komen vanuit Supabase.
+        Op deze website zal ik mijn ervaring documenteren tijdens mijn stage bij Trans-IT.
 
       </motion.p>
 

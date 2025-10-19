@@ -1,27 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import BlogCard from "./BlogCard";
 import type { Posts } from "../../types.ts";
-import { createClient } from "@supabase/supabase-js";
+import { BlogContext } from "./BlogContext/BlogContext.tsx";
 
-const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_PUBLIC_SUPABASE_ANON);
 
 export default function Blog() {
   const [selectedTag, setSelectedTag] = useState<string>("all");
-  const [posts, setPosts] = useState<Posts[]>([]);
-
-  useEffect(() => {
-    getPosts();
-  }, []);
-
-  const getPosts = async () => {
-    try {
-      const { data } = await supabase.from("BlogPosts").select();
-      setPosts(data as Posts[]);
-    } catch (error) {
-      console.log(error);
-      setPosts([]);
-    }
-  };
+  const {posts} = useContext(BlogContext)
 
   const allTags: string[] = [
     "all",
