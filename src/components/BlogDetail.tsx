@@ -1,12 +1,16 @@
 import { useParams, Link } from "react-router-dom";
-import { posts, type Post } from "../../data/posts";
 import { motion } from "framer-motion";
 import { HiArrowLeft } from "react-icons/hi";
+import { useContext } from "react";
+import { BlogContext } from "./BlogContext/BlogContext";
+import Markdown from 'react-markdown'
+import type { Posts } from "../../types";
 
 export default function BlogDetail() {
+  const {posts} = useContext(BlogContext)
   const { id } = useParams<{ id: string }>();
 
-  const post: Post | undefined = posts.find((p) => p.id.toString() === id);
+  const post: Posts | undefined = posts.find((p) => p.id.toString() === id);
 
   if (!post) {
     return (
@@ -44,24 +48,18 @@ export default function BlogDetail() {
 
         {/* Datum */}
         <p className="text-sm md:text-base text-gray-500 mb-6">
-          Gepubliceerd op {new Date(post.date).toLocaleDateString("nl-NL")}
+          Gepubliceerd op {new Date(post.created_at).toLocaleDateString("nl-NL")}
         </p>
 
         {/* Afbeelding */}
-        {post.image && (
+        {post.attachments?.[0] && (
           <img
-            src={post.image}
-            alt={post.title}
+            src={post.attachments[0]}
+            alt={post.title ?? ""}
             className="w-full h-auto mb-6 rounded"
           />
         )}
-
-        {/* Inhoud */}
-        <div className="text-gray-700 text-base md:text-lg space-y-4">
-          {post.content.split("\n").map((para, i) => (
-            <p key={i}>{para}</p>
-          ))}
-        </div>
+        <div className="text-gray-700 text-base md:text-lg space-y-4"><Markdown>{post.markdown}</Markdown></div>
       </motion.div>
     </div>
   );

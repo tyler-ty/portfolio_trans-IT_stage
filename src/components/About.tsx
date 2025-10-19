@@ -18,7 +18,7 @@ export default function AboutPage() {
             href="https://be.linkedin.com/in/tyler-imagbudu-6006b0223"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-800 transition-colors text-2xl"
+            className="text-link transition-colors text-2xl"
           >
             <FaLinkedin />
           </a>
@@ -26,7 +26,7 @@ export default function AboutPage() {
             href="https://github.com/tyler-ty"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-800 hover:text-gray-900 transition-colors text-2xl"
+            className="text-heading hover:text-text transition-colors text-2xl"
           >
             <FaGithub />
           </a>
