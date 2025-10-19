@@ -12,7 +12,7 @@ import BlogDetail from "./components/BlogDetail";
 //add translations
 const Root = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="bg-background transition-colors duration-200 flex flex-col min-h-screen">
       <NavBar/>
       <div className="flex-grow">
         <Outlet />

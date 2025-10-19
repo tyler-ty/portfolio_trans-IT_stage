@@ -9,7 +9,7 @@ export default function AboutPage() {
         <img
           src="tyler.jpg"
           alt="Mijn foto"
-          className="w-48 h-48 rounded-full object-cover shadow-lg"
+          className="w-48 h-48 rounded-full object-cover shadow-lg border-3 border-text p-8px"
         />
 
         {/* Social icons onder foto */}
@@ -36,10 +36,10 @@ export default function AboutPage() {
       {/* Info sectie */}
       <div className="flex-1 flex flex-col justify-center gap-6">
         {/* Naam en korte intro */}
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+        <h1 className="text-3xl md:text-4xl font-bold text-heading">
           Tyler Imagbudu
         </h1>
-        <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+        <p className="text-text text-base md:text-lg leading-relaxed">
             Hallo! Ik ben student aan de AP Hogeschool en stagiair bij Trans-IT. 
             Tijdens mijn studie heb ik interesse ontwikkeld in full stack development, en vooral in React.js. 
             Ik vind het fascinerend hoe je applicaties kunt maken die nuttig zijn en een echte meerwaarde bieden.
@@ -47,26 +47,26 @@ export default function AboutPage() {
 
         {/* Stagebedrijf info */}
         <div className=" p-4 ">
-          <h2 className="text-xl font-semibold mb-2">Mijn rol</h2>
-          <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+          <h2 className="text-heading text-xl font-semibold mb-2">Mijn rol</h2>
+          <p className="text-text text-base md:text-lg leading-relaxed">
             Tijdens mijn stage krijg ik de kans om ervaring op te doen door zelf mee te werken in het team. Aan de hand van tickets
             kan ik zelf bijdragen en nieuwe functionaliteit aanmaken. Hierdoor leer ik hoe het eruit ziet in een professionele werkomgeving.
           </p>
-          <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+          <p className="text-text text-base md:text-lg leading-relaxed">
 
           </p>
         </div>
 
         <div className=" p-4 ">
-          <h2 className="text-xl font-semibold mb-2">Informatie over het bedrijf</h2>
-          <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+          <h2 className="text-heading text-xl font-semibold mb-2">Informatie over het bedrijf</h2>
+          <p className="text-text text-base md:text-lg leading-relaxed">
             <a className="text-blue-600 hover:underline transition-colors" href="https://trans-it.be/en/home-eng/">Trans-IT</a> is een Belgisch technologiebedrijf dat zich richt op het ontwikkelen van slimme 
             softwareoplossingen voor de transport- en logistieke sector. 
             Hun kernproduct is een AI-gestuurd Transport Management Systeem (TMS) dat speciaal is ontworpen voor containervervoer. 
             Het systeem helpt transportbedrijven om hun operaties efficiënter te plannen, te monitoren en te automatiseren, waardoor 
             ze meer bestellingen kunnen verwerken met minder middelen.
           </p>
-          <p className="text-gray-700 text-base md:text-lg leading-relaxed mt-2">
+          <p className="text-text text-base md:text-lg leading-relaxed mt-2">
             Het hoofd kantoor bevindt zich op 
             Impulsstraat 6
             2220 Heist-op-den-Berg

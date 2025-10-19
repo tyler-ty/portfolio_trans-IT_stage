@@ -1,41 +1,41 @@
 import { Link } from "react-router-dom";
-import type {Posts} from "../../types.ts"
+import type { Posts } from "../../types.ts";
+
 interface BlogCardProps {
   post: Posts;
 }
 
-export default function BlogCard({ post  }: BlogCardProps) {
-  let previewContent = ""
-  if(post.markdown) {
-  previewContent =
-    post?.markdown.length > 150
-      ? post.markdown.slice(0, 150) + "..."
-      : post.markdown;
+export default function BlogCard({ post }: BlogCardProps) {
+  let previewContent = "";
+  if (post.markdown) {
+    previewContent =
+      post.markdown.length > 150
+        ? post.markdown.slice(0, 150) + "..."
+        : post.markdown;
   }
-
 
   return (
     <Link to={`/blog/${post.id}`} className="block">
-      <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow mb-6 hover:shadow-lg transition-shadow duration-200">
-        {post.attachments && post.title &&  (
+      <div className="bg-card border border-highlight rounded-xl overflow-hidden shadow mb-6 hover:shadow-lg transition-shadow duration-200">
+        {post.attachments && post.title && (
           <img
-            src={""}
+            src={post.attachments[0] ?? ""}
             alt={post.title}
             className="w-full h-64 object-cover"
           />
         )}
 
         <div className="p-6">
-          <h2 className="text-2xl font-bold mb-2 text-gray-900">
+          <h2 className="text-heading text-2xl font-bold mb-2">
             {post.title}
           </h2>
-          <p className="text-gray-700 mb-4">{previewContent}</p>
+          <p className="text-text mb-4">{previewContent}</p>
 
           <div className="flex flex-wrap gap-2">
             {post.tags?.map((tag, index) => (
               <span
                 key={index}
-                className="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full"
+                className="bg-blue-800/20 text-link text-xs font-semibold px-2 py-1 rounded-full"
               >
                 {tag}
               </span>
