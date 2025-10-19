@@ -9,7 +9,7 @@ export default function AboutPage() {
         <img
           src="tyler.jpg"
           alt="Mijn foto"
-          className="w-48 h-48 rounded-full object-cover shadow-lg border-3 border-text p-8px"
+          className="w-48 h-48 rounded-full object-cover shadow-lg border-3 border-text"
         />
 
         {/* Social icons onder foto */}
@@ -60,7 +60,7 @@ export default function AboutPage() {
         <div className=" p-4 ">
           <h2 className="text-heading text-xl font-semibold mb-2">Informatie over het bedrijf</h2>
           <p className="text-text text-base md:text-lg leading-relaxed">
-            <a className="text-blue-600 hover:underline transition-colors" href="https://trans-it.be/en/home-eng/">Trans-IT</a> is een Belgisch technologiebedrijf dat zich richt op het ontwikkelen van slimme 
+            <a className="text-link hover:underline transition-colors" href="https://trans-it.be/en/home-eng/">Trans-IT</a> is een Belgisch technologiebedrijf dat zich richt op het ontwikkelen van slimme 
             softwareoplossingen voor de transport- en logistieke sector. 
             Hun kernproduct is een AI-gestuurd Transport Management Systeem (TMS) dat speciaal is ontworpen voor containervervoer. 
             Het systeem helpt transportbedrijven om hun operaties efficiënter te plannen, te monitoren en te automatiseren, waardoor 

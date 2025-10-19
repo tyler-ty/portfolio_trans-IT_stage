@@ -16,7 +16,16 @@ function classNames(...classes: string[]) {
 }
 
 const NavBar = () => {
-  const [isDark,setIsDark] = useState<boolean>(false)
+  const getInitialTheme = (): boolean => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("theme");
+      if (saved) return saved === "dark";
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+    return false;
+  };
+  const [isDark,setIsDark] = useState<boolean>(getInitialTheme)
+  
   useEffect(() => {
     const root = document.documentElement;
     if (isDark) {

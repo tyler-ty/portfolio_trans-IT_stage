@@ -44,7 +44,7 @@ export default function Blog() {
             onClick={() => setSelectedTag(tag)}
             className={`px-4 py-2 rounded-full cursor-pointer uppercase font-medium text-sm transition-colors ${
               selectedTag === tag
-                ? "bg-blue-500 text-white"
+                ? "bg-link text-background"
                 : "bg-card text-text hover:bg-highlight"
             }`}
           >
