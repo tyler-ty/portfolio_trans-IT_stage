@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import type { Posts } from "../../../types.ts";
 import { createClient } from "@supabase/supabase-js";
 
@@ -19,11 +19,14 @@ export const BlogProvider = ({children}: {children: React.ReactNode}) => {
   
     const getPosts = async () => {
       try {
+        setLoading(true)
         const { data } = await supabase.from("BlogPosts").select();
         setPosts(data as Posts[]);
       } catch (error) {
         console.log(error);
         setPosts([]);
+      } finally {
+        setLoading(false)
       }
     };
 

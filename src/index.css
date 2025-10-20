@@ -5,7 +5,8 @@
   --color-highlight: var(--highlight);
   --color-text: var(--text);
   --color-heading: var(--heading);
-  --color-link: var(--link)
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
 }
 
 :root {
@@ -16,7 +17,8 @@
   --highlight: oklch(92.8% 0.006 264.531);
   --color-text: #414040;         
   --color-heading: #000;
-  --color-link: oklch(42.4% 0.199 265.638);       
+  --color-link: oklch(42.4% 0.199 265.638);
+  --color-link-hover: oklch(48.8% 0.243 264.376);     
 }
 
 .dark {
@@ -24,5 +26,6 @@
   --highlight: oklch(35.326% 0.02205 256.423);
   --color-text: #c3c2c2;       
   --color-heading: #efeded;
-  --color-link: oklch(88.2% 0.059 254.128);       
+  --color-link: oklch(88.2% 0.059 254.128);   
+  --color-link-hover: oklch(88.2% 0.059 254.128); ;       
 }

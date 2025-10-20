@@ -27,7 +27,7 @@ export default function BlogDetail() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-12">
+    <div className="max-w-4xl mx-auto px-6 py-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -35,11 +35,30 @@ export default function BlogDetail() {
       >
         {/* Terug knop */}
         <Link
-          to="/blogs"
-          className="flex items-center text-blue-600 hover:underline transition-colors text-sm md:text-base"
-        >
-          <HiArrowLeft className="mr-2" /> <p>Terug naar Blog</p>
-        </Link>
+      to="/blogs"
+      className="
+        group inline-flex items-center gap-2
+        text-link hover:text-link-hover
+        transition-all duration-200 
+        text-sm mb-3 md:text-base font-medium
+      "
+    >
+      <HiArrowLeft
+        className="
+          text-lg transition-transform duration-200
+          group-hover:-translate-x-1
+        "
+      />
+      <span className="relative">
+        Terug naar Blog
+        <span
+          className="
+            absolute left-0 bottom-0 w-0 h-[1px] bg-link 
+            transition-all duration-300 group-hover:w-full
+          "
+        ></span>
+      </span>
+    </Link>
 
         {/* Titel */}
         <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-gray-800">
