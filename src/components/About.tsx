@@ -4,7 +4,6 @@ export default function AboutPage() {
   return (
     <div className="max-w-5xl mx-auto px-6 py-12 flex flex-col md:flex-row gap-10 items-start">
       
-      {/* Foto + socials */}
       <div className="flex flex-col items-center gap-4 md:w-48">
         <img
           src="tyler.jpg"
@@ -12,7 +11,6 @@ export default function AboutPage() {
           className="w-48 h-48 rounded-full object-cover shadow-lg border-3 border-text"
         />
 
-        {/* Social icons onder foto */}
         <div className="flex gap-4 mt-2">
           <a
             href="https://be.linkedin.com/in/tyler-imagbudu-6006b0223"
@@ -33,9 +31,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Info sectie */}
       <div className="flex-1 flex flex-col justify-center gap-6">
-        {/* Naam en korte intro */}
         <h1 className="text-3xl md:text-4xl font-bold text-heading">
           Tyler Imagbudu
         </h1>
@@ -45,7 +41,6 @@ export default function AboutPage() {
             Ik vind het fascinerend hoe je applicaties kunt maken die nuttig zijn en een echte meerwaarde bieden.
         </p>
 
-        {/* Stagebedrijf info */}
         <div className=" p-4 ">
           <h2 className="text-heading text-xl font-semibold mb-2">Mijn rol</h2>
           <p className="text-text text-base md:text-lg leading-relaxed">
