@@ -43,17 +43,17 @@ const NavBar = () => {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
-          {/* Mobile Menu Button */}
+
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            <DisclosureButton className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/20">
+            <DisclosureButton className="relative inline-flex right-0 rounded-md p-2 text-gray-300 hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/20">
               <Bars3Icon aria-hidden="true" className="block h-6 w-6 ui-open:hidden" />
               <XMarkIcon aria-hidden="true" className="hidden h-6 w-6 ui-open:block" />
             </DisclosureButton>
           </div>
 
-          {/* Logo + Desktop Nav */}
+
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start gap-8">
-            {/* Logo */}
+
             <NavLink to="/" className="flex items-center">
               <img
                 src={logo}
@@ -62,7 +62,6 @@ const NavBar = () => {
               />
             </NavLink>
 
-            {/* Desktop Links */}
             <div className="flex items-center hidden sm:flex sm:space-x-8">
               {navigation.map((item) => (
                 <NavLink
@@ -90,8 +89,7 @@ const NavBar = () => {
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
-      <DisclosurePanel className="sm:hidden border-t border-white/10 bg-black/90 backdrop-blur-sm">
+      <DisclosurePanel className="sm:hidden backdrop-blur-lg  border-highlight border-t backdrop-blur-lg">
         <div className="space-y-1 px-3 py-3">
           {navigation.map((item) => (
             <NavLink
@@ -100,8 +98,8 @@ const NavBar = () => {
               className={({ isActive }) =>
                 classNames(
                   isActive
-                    ? 'bg-blue-900/40 text-blue-200'
-                    : 'text-gray-300 hover:bg-white/10 hover:text-white',
+                    ? 'bg-link text-background'
+                    : 'text-text hover:bg-background/70 hover:text-highlight',
                   'block rounded-md px-3 py-2 text-base font-medium transition'
                 )
               }

@@ -13,9 +13,9 @@ export default function LandingPage() {
   const latestPost: Posts = sortedPosts[0];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-white text-center px-6 md:px-12 py-10">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-background text-center px-6 md:px-12 py-10">
       <motion.h1
-        className="text-2xl md:text-4xl font-extrabold mb-4 text-gray-800 max-w-3xl"
+        className="text-2xl md:text-4xl font-extrabold mb-4 text-heading max-w-3xl"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -24,7 +24,7 @@ export default function LandingPage() {
       </motion.h1>
 
       <motion.p
-        className="text-base md:text-lg text-gray-600 max-w-6xl mx-auto mb-8 leading-relaxed"
+        className="text-base md:text-lg text-text max-w-6xl mx-auto mb-8 leading-relaxed"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.7 }}
@@ -41,7 +41,7 @@ export default function LandingPage() {
       >
         <Link
           to="/blogs"
-          className="bg-[#003c7d] text-white px-6 py-2.5 rounded-2xl shadow hover:bg-[#0053a0] transition"
+          className="bg-link text-background px-6 py-2.5 rounded-2xl shadow hover:bg-link-hover transition"
         >
           Bekijk Blog
         </Link>
@@ -64,7 +64,7 @@ export default function LandingPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.8 }}
         >
-          <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+          <h2 className="text-xl md:text-2xl font-bold text-heading mb-4">
             Laatste blogpost
           </h2>
           <BlogCard post={latestPost} />

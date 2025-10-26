@@ -27,7 +27,7 @@ export default function BlogDetail() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
+    <div className="max-w-5xl mx-auto px-6 py-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -60,17 +60,15 @@ export default function BlogDetail() {
       </span>
     </Link>
 
-        {/* Titel */}
-        <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-gray-800">
+        <h1 className="text-heading text-3xl md:text-4xl font-extrabold mb-4 text-gray-800">
           {post.title}
         </h1>
 
-        {/* Datum */}
-        <p className="text-sm md:text-base text-gray-500 mb-6">
+        <p className="text-text text-sm md:text-base text-gray-500 mb-6">
           Gepubliceerd op {new Date(post.created_at).toLocaleDateString("nl-NL")}
         </p>
 
-        {/* Afbeelding */}
+
         {post.attachments?.[0] && (
           <img
             src={post.attachments[0]}
@@ -78,7 +76,7 @@ export default function BlogDetail() {
             className="w-full h-auto mb-6 rounded"
           />
         )}
-        <div className="text-gray-700 text-base md:text-lg space-y-4"><Markdown>{post.markdown}</Markdown></div>
+        <div className="prose-xl text-text text-base md:text-xl "><Markdown>{post.markdown}</Markdown></div>
       </motion.div>
     </div>
   );
