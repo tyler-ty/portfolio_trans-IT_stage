@@ -2,6 +2,7 @@ import {
   Outlet,
   createBrowserRouter,
   RouterProvider,
+  useLocation,
 } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import NavBar from "./components/NavBar";
@@ -10,19 +11,31 @@ import About from "./components/About";
 import Footer from "./components/Footer";
 import BlogDetail from "./components/BlogDetail";
 import { BlogProvider } from "./components/BlogContext/BlogContext";
+import { useLayoutEffect } from "react";
 //add translations
+
+const Wrapper = ({ children }:any) => {
+  const location = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [location.pathname]);
+
+  return children;
+};
 const Root = () => {
   return (
-    <div className="bg-background flex flex-col min-h-screen">
-      <NavBar/>
-      <div className="flex-grow">
-        <Outlet />
+    <Wrapper>
+      <div className="bg-background flex flex-col min-h-screen">
+        <NavBar />
+        <div className="flex-grow">
+          <Outlet />
+        </div>
+        <Footer />
       </div>
-      <Footer/>
-    </div>
+    </Wrapper>
   );
 };
-
 
 const App = () => {
   const router = createBrowserRouter([
@@ -43,9 +56,9 @@ const App = () => {
           element: <About />,
         },
         {
-          path:"blog/:id",
-          element: <BlogDetail/>
-        }
+          path: "blog/:id",
+          element: <BlogDetail />,
+        },
       ],
     },
   ]);
