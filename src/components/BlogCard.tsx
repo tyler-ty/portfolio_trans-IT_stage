@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import type { Posts } from "../../types.ts";
+import Markdown from "react-markdown";
 
 interface BlogCardProps {
   post: Posts;
@@ -29,7 +30,7 @@ export default function BlogCard({ post }: BlogCardProps) {
           <h2 className="text-heading text-2xl font-bold mb-2">
             {post.title}
           </h2>
-          <p className="text-text mb-4">{previewContent}</p>
+          <p className="text-text mb-4"><Markdown>{previewContent}</Markdown></p>
 
           <div className="flex flex-wrap gap-2">
             {post.tags?.map((tag, index) => (
