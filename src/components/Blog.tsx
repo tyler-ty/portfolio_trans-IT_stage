@@ -7,7 +7,6 @@ import { BlogContext } from "./BlogContext/BlogContext.tsx";
 export default function Blog() {
   const [selectedTag, setSelectedTag] = useState<string>("all");
   const {posts} = useContext(BlogContext)
-
   const allTags: string[] = [
     "all",
     ...Array.from(new Set(posts.flatMap((post) => post.tags ?? []))),
@@ -39,7 +38,7 @@ export default function Blog() {
       </div>
 
       <div className="max-w-2xl w-full space-y-6">
-        {filteredPosts.map((post) => (
+        {filteredPosts.sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime()).map((post) => (
           <BlogCard key={post.id} post={post} />
         ))}
       </div>
