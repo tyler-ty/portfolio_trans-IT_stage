@@ -22,6 +22,7 @@ export type Database = {
           markdown: string | null
           tags: string[] | null
           title: string | null
+          videos: string[] | null
         }
         Insert: {
           attachments?: string[] | null
@@ -30,6 +31,7 @@ export type Database = {
           markdown?: string | null
           tags?: string[] | null
           title?: string | null
+          videos?: string[] | null
         }
         Update: {
           attachments?: string[] | null
@@ -38,6 +40,7 @@ export type Database = {
           markdown?: string | null
           tags?: string[] | null
           title?: string | null
+          videos?: string[] | null
         }
         Relationships: []
       }
@@ -49,7 +52,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      Tags: "Code" | "Lessons learned" | "Wins" | "Teambuilding"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -176,6 +179,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      Tags: ["Code", "Lessons learned", "Wins", "Teambuilding"],
+    },
   },
 } as const
