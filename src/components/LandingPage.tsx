@@ -41,7 +41,7 @@ export default function LandingPage() {
       >
         <Link
           to="/blogs"
-          className="bg-link text-background px-6 py-2.5 rounded-2xl shadow hover:bg-link-hover transition"
+          className="bg-link text-background px-6 py-2.5 rounded-2xl shadow font-medium hover:bg-link-hover transition"
         >
           Bekijk Blog
         </Link>

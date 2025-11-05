@@ -19,7 +19,7 @@ export default function Blog() {
 
   return (
     <div className="flex flex-col items-center px-4 py-8 bg-background min-h-screen ">
-      <h1 className="text-heading text-3xl font-bold mb-6 text-center">Mijn Blog</h1>
+      <h1 className="text-heading text-3xl font-medium mb-6 text-center">Blog Posts</h1>
 
       <div className="mb-8 flex flex-wrap gap-3 justify-center">
         {allTags.map((tag) => (

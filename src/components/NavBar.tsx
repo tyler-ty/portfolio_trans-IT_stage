@@ -7,7 +7,7 @@ import sun from "../assets/sun.svg"
 import { useEffect, useState } from 'react'
 
 const navigation = [
-  { name: 'Blogs', href: 'blogs' },
+  { name: 'Blog', href: 'blogs' },
   { name: 'About', href: 'about' },
 ]
 
