@@ -73,7 +73,7 @@ export default function BlogDetail() {
           <img
             src={post.attachments[0]}
             alt={post.title ?? ""}
-            className="w-full h-auto mb-6 rounded"
+            className="w-full h-[32rem] mb-6 rounded object-cover"
           />
         )}
         <div className="prose-xl text-text text-base md:text-xl "><Markdown>{post.markdown}</Markdown></div>
