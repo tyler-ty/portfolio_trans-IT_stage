@@ -8,7 +8,7 @@ export default function AboutPage() {
         <img
           src="tyler.jpg"
           alt="Mijn foto"
-          className="w-48 h-48 rounded-full object-cover shadow-lg border-3 border-text"
+          className="w-48 h-48 rounded-full object-cover shadow-lg border-1 border-text"
         />
 
         <div className="flex gap-4 mt-2">

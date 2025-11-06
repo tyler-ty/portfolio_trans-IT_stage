@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import { HiArrowLeft } from "react-icons/hi";
 import { useContext } from "react";
 import { BlogContext } from "./BlogContext/BlogContext";
-import Markdown from 'react-markdown'
+import Markdown from "react-markdown";
 import type { Posts } from "../../types";
 
 export default function BlogDetail() {
-  const {posts} = useContext(BlogContext)
+  const { posts } = useContext(BlogContext);
   const { id } = useParams<{ id: string }>();
 
   const post: Posts | undefined = posts.find((p) => p.id.toString() === id);
@@ -34,39 +34,39 @@ export default function BlogDetail() {
         transition={{ duration: 0.7 }}
       >
         <Link
-      to="/blogs"
-      className="
+          to="/blogs"
+          className="
         group inline-flex items-center gap-2
         text-link hover:text-link-hover
         transition-all duration-200 
         text-sm mb-3 md:text-base font-medium
       "
-    >
-      <HiArrowLeft
-        className="
+        >
+          <HiArrowLeft
+            className="
           text-lg transition-transform duration-200
           group-hover:-translate-x-1
         "
-      />
-      <span className="relative">
-        Terug naar Blog
-        <span
-          className="
-            absolute left-0 bottom-0 w-0 h-[1px] bg-link 
+          />
+          <span className="relative">
+            Terug naar Blog
+            <span
+              className="
+            absolute left-0 top-6 w-0 h-[1px] bg-link 
             transition-all duration-300 group-hover:w-full
           "
-        ></span>
-      </span>
-    </Link>
+            ></span>
+          </span>
+        </Link>
 
         <h1 className="text-heading text-3xl md:text-4xl font-extrabold mb-4 text-gray-800">
           {post.title}
         </h1>
 
         <p className="text-text text-sm md:text-base text-gray-500 mb-6">
-          Gepubliceerd op {new Date(post.created_at).toLocaleDateString("nl-NL")}
+          Gepubliceerd op{" "}
+          {new Date(post.created_at).toLocaleDateString("nl-NL")}
         </p>
-
 
         {post.attachments?.[0] && (
           <img
@@ -75,7 +75,25 @@ export default function BlogDetail() {
             className="w-full h-[32rem] mb-6 rounded object-cover"
           />
         )}
-        <div className="prose-xl text-text text-base md:text-xl "><Markdown>{post.markdown}</Markdown></div>
+        <div className="prose-xl text-text text-base md:text-xl prose prose-slate max-w-full">
+          <Markdown
+            components={{
+              strong: ({ children }) => <b>{children}</b>,
+              h2: ({ children }) => <h2 className="text-heading">{children}</h2>
+    }}
+          >
+            {post.markdown}
+          </Markdown>
+          {post.videos && post.videos.length > 0 && (
+            <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full rounded-lg shadow-md"
+                src={post.videos[0]}
+                allow="autoplay"
+              ></iframe>
+            </div>
+          )}
+        </div>
       </motion.div>
     </div>
   );
