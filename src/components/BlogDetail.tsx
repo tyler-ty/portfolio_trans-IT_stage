@@ -69,18 +69,22 @@ export default function BlogDetail() {
         </p>
 
         {post.attachments?.[0] && (
-          <img
-            src={post.attachments[0]}
-            alt={post.title ?? ""}
-            className="w-full h-[32rem] mb-6 rounded object-cover"
-          />
+          <div className="w-full mb-6 aspect-w-16 aspect-h-9 md:aspect-h-16">
+  <img
+    src={post.attachments[0]}
+    alt={post.title ?? ""}
+    className="w-full h-full rounded object-cover"
+  />
+</div>
         )}
         <div className="prose-xl text-text text-base md:text-xl prose prose-slate max-w-full">
           <Markdown
             components={{
               strong: ({ children }) => <b>{children}</b>,
-              h2: ({ children }) => <h2 className="text-heading">{children}</h2>
-    }}
+              h2: ({ children }) => (
+                <h2 className="text-heading">{children}</h2>
+              ),
+            }}
           >
             {post.markdown}
           </Markdown>
