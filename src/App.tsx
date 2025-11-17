@@ -36,12 +36,38 @@ const Root = () => {
     </Wrapper>
   );
 };
+import { useRouteError, Link } from "react-router-dom";
+
+export const ErrorPage = () => {
+  const error: any = useRouteError();
+
+  return (
+    <>
+    <NavBar/>
+    <div className="flex flex-col items-center justify-center h-screen text-center p-6">
+      <h1 className="text-4xl font-bold mb-4">Something went wrong</h1>
+      <p className="text-xl mb-4">
+        {error?.statusText || error?.message || "An unexpected error occurred."}
+      </p>
+
+      <Link
+        to="/"
+        className="bg-link text-background px-6 py-2.5 rounded-2xl shadow font-medium hover:bg-link-hover transition"
+      >
+        Go back home
+      </Link>
+    </div>
+    <Footer/>
+    </>
+  );
+}
 
 const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Root />,
+      errorElement: <ErrorPage />, 
       children: [
         {
           path: "",

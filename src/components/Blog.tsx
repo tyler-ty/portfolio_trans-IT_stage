@@ -9,7 +9,7 @@ export default function Blog() {
   const {posts} = useContext(BlogContext)
   const allTags: string[] = [
     "all",
-    ...Array.from(new Set(posts.flatMap((post) => post.tags ?? []))),
+    ...Array.from(new Set(posts?.flatMap((post) => post.tags ?? []))),
   ];
 
   const filteredPosts: Posts[] =
@@ -38,10 +38,11 @@ export default function Blog() {
       </div>
 
       <div className="max-w-2xl w-full space-y-6">
-        {filteredPosts.sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime()).map((post) => (
+        {filteredPosts?.sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime()).map((post) => (
           <BlogCard key={post.id} post={post} />
         ))}
       </div>
+        {!filteredPosts && <p>Supabase project is down. Contact owner.</p>}
     </div>
   );
 }

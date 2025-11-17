@@ -5,12 +5,12 @@ import { useContext } from "react";
 import type {Posts} from "../../types.ts"
 import { BlogContext } from "./BlogContext/BlogContext.tsx";
 export default function LandingPage() {
-  const {posts} = useContext(BlogContext)
-  const sortedPosts:Posts[] = [...posts].sort(
-    (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+  const {posts = []} = useContext(BlogContext)
+  const sortedPosts:Posts[] = posts && [...posts].sort(
+    (a, b) => new Date(b?.created_at).getTime() - new Date(a?.created_at).getTime()
   );
 
-  const latestPost: Posts = sortedPosts[0];
+  const latestPost: Posts = posts && sortedPosts[0];
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-background text-center px-6 md:px-12 py-10">
