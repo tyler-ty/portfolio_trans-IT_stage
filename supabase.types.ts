@@ -21,6 +21,7 @@ export type Database = {
           id: number
           markdown: string | null
           tags: string[] | null
+          thumbnail: string | null
           title: string | null
           videos: string[] | null
         }
@@ -30,6 +31,7 @@ export type Database = {
           id?: number
           markdown?: string | null
           tags?: string[] | null
+          thumbnail?: string | null
           title?: string | null
           videos?: string[] | null
         }
@@ -39,6 +41,7 @@ export type Database = {
           id?: number
           markdown?: string | null
           tags?: string[] | null
+          thumbnail?: string | null
           title?: string | null
           videos?: string[] | null
         }

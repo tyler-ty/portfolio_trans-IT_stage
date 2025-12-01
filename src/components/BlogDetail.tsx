@@ -68,14 +68,14 @@ export default function BlogDetail() {
           {new Date(post.created_at).toLocaleDateString("nl-NL")}
         </p>
 
-        {post.attachments?.[0] && (
+        {post.thumbnail && (
           <div className="w-full mb-6 aspect-w-16 aspect-h-9 md:aspect-h-16">
-  <img
-    src={post.attachments[0]}
-    alt={post.title ?? ""}
-    className="w-full h-full rounded object-cover"
-  />
-</div>
+            <img
+              src={post.thumbnail ?? ""}
+              alt={post.title ?? ""}
+              className="w-full h-full rounded object-cover"
+            />
+          </div>
         )}
         <div className="prose-xl text-text text-base md:text-xl prose prose-slate max-w-full">
           <Markdown

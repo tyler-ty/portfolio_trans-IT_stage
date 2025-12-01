@@ -18,9 +18,9 @@ export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link to={`/blog/${post.id}`} className="block">
       <div className="bg-card border border-highlight rounded-xl overflow-hidden shadow mb-6 hover:shadow-lg transition-shadow duration-200">
-        {post.attachments && post.title && (
+        {post.thumbnail && post.title && (
           <img
-            src={post.attachments[0] ?? ""}
+            src={post.thumbnail ?? ""}
             alt={post.title}
             className="w-full h-64 object-cover"
           />
