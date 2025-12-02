@@ -21,21 +21,9 @@ export default function LandingPage() {
       </div>
 
       <div className="relative flex flex-col items-center justify-center min-h-[70vh] text-center px-6 md:px-12 py-15">
-        <motion.div
-          className="mb-8"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          <img
-            src="https://trans-it.be/wp-content/uploads/2023/11/logo-trans-it-2.png"
-            alt="Trans-IT Logo"
-            className="w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-lg"
-          />
-        </motion.div>
 
         <motion.h1
-          className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance text-heading mb-6 bg-gradient-to-r from-heading to-link bg-clip-text text-transparent leading-[1.2] pb-2"
+          className="mt-2 text-5xl font-semibold tracking-tight text-balance text-white sm:text-6xl text-heading mb-6 bg-gradient-to-r from-heading to-link bg-clip-text text-transparent leading-[1.2] pb-2"
           style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -52,6 +40,19 @@ export default function LandingPage() {
         >
           Op deze website documenteer ik mijn ervaringen en leerprocessen tijdens mijn stage bij Trans-IT.
         </motion.p>
+
+        <motion.div
+          className="mb-8"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <img
+            src="https://trans-it.be/wp-content/uploads/2023/11/logo-trans-it-2.png"
+            alt="Trans-IT Logo"
+            className="w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-lg"
+          />
+        </motion.div>
 
         <motion.div
           className="flex flex-col sm:flex-row gap-4 "
@@ -78,7 +79,7 @@ export default function LandingPage() {
           transition={{ delay: 0.8, duration: 0.8 }}
         >
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-heading mb-4">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-balance text-heading mb-4">
               Laatste Blogpost
             </h2>
           </div>
