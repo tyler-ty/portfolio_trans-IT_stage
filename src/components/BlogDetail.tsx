@@ -69,12 +69,14 @@ export default function BlogDetail() {
         </p>
 
         {post.thumbnail && (
-          <div className="w-full mb-6 aspect-w-16 aspect-h-9 md:aspect-h-16">
-            <img
-              src={post.thumbnail ?? ""}
-              alt={post.title ?? ""}
-              className="w-full h-full rounded object-cover"
-            />
+          <div className="w-full mb-6 flex justify-center">
+            <div className="w-full  h-[600px] overflow-hidden rounded-lg">
+              <img
+                src={post.thumbnail}
+                alt={post.title ?? ""}
+                className="h-full w-full object-cover"
+              />
+            </div>
           </div>
         )}
         <div className="prose-xl text-text text-base md:text-xl prose prose-slate max-w-full">
